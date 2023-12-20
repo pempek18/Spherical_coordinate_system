@@ -19,3 +19,4 @@ s.plot_data()
 # Example with Prime Numbers 
 ## Idea : https://www.youtube.com/shorts/h2V3r7oBeMI?si=SVXgROxl8OvyLCHD
 ## Implementation : prime_numbers.py
+![Alt text](./data//10000_Primes.png?raw=true "Printed Spherical arrow")

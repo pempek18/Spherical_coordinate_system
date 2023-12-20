@@ -132,8 +132,8 @@ class Spherical :
             ax.arrow(x=0, y=0, 
                      dx=x_to_plot, 
                      dy=y_to_plot, 
-                     head_width=0.1, 
-                     head_length=0.1, 
+                     head_width=0, 
+                     head_length=0, 
                      fc='blue', 
                      ec='blue',
                      label='recarculated x y')
@@ -153,12 +153,16 @@ class Spherical :
         plt.title(title, fontsize=11, pad=-20, loc='left')
         plt.show()    
 if __name__ == '__main__':
-    x = float(input("Type x: "))
-    y = float(input("type y: ")) 
-    z = float(input("type z: "))
-    s = Spherical(print=True)
-    r       = s.r(x,y,z)
-    theta   = s.theta(x=x,y=y,z=z)
-    phi     = s.phi(x=x,y=y)
-    print(f"x={x} y={y}, z={z} r={format(r, '.2f')}, theta={format(theta,'.2f')}, phi={format(phi, '.2f')}")
-    s.plot_data()
+    while(True):
+        x = float(input("Type x: "))
+        y = float(input("type y: ")) 
+        z = float(input("type z: "))
+        s = Spherical(print=True)
+        r       = s.r(x,y,z)
+        theta   = s.theta(x=x,y=y,z=z)
+        phi     = s.phi(x=x,y=y)
+        print(f"x={x} y={y}, z={z} r={format(r, '.2f')}, theta={format(theta,'.2f')}, phi={format(phi, '.2f')}")
+        s.plot_data()
+        exit = input("repeat ? y/n :")
+        if exit != "y" :
+            break

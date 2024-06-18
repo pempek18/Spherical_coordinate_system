@@ -63,21 +63,32 @@ class Spherical :
         elif x * y < 0 :
             self.__var_theta = -np.pi / 2
         return self.__var_theta
+    def theta_r(self,r : float, z : float) :
+        self.__var_r = r 
+        self.__var_z = z
+        if z == 0 :
+            self.__var_theta = np.pi / 2 
+        return self.__var_theta
     def phi(self,x : float,y : float):
         self.__var_x = x 
         self.__var_y = y 
 
         if x != 0 and y != 0:
-            phi_quater = 0 
+            phi_quater = 0  
+            #first quater
             if x > 0 and y > 0 :
                 phi_quater = 0 ; 
+            #secound quater
             if x < 0 and y > 0 :
-                phi_quater = np.pi / 2 
+                phi_quater = np.pi
+            #third quater
             if x < 0 and y < 0 :
                 phi_quater = np.pi 
+            #forth quater
             if x > 0 and y < 0 :
-                phi_quater = np.pi * 3  / 2                             
-            self.__var_phi = (np.arctan((y / x )) * self._quadrants('tan',x=x,y=y)) + phi_quater
+                phi_quater =  np.pi * 2              
+            print("tan in quater: ", self._quadrants('tan',x=x,y=y), "phi quater: ", phi_quater)               
+            self.__var_phi = (np.arctan(y / x ) + phi_quater) #* self._quadrants('tan',x=x,y=y)
         else:
             if x==0 and y > 0 :
                 self.__var_phi = np.pi/2
@@ -154,9 +165,9 @@ class Spherical :
         plt.show()    
 if __name__ == '__main__':
     while(True):
-        x = float(input("Type x: "))
-        y = float(input("type y: ")) 
-        z = float(input("type z: "))
+        x = float(input("Type x: ").replace(',','.'))
+        y = float(input("type y: ").replace(',','.')) 
+        z = float(input("type z: ").replace(',','.'))
         s = Spherical(print=True)
         r       = s.r(x,y,z)
         theta   = s.theta(x=x,y=y,z=z)

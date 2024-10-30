@@ -164,16 +164,31 @@ class Spherical :
         plt.title(title, fontsize=11, pad=-20, loc='left')
         plt.show()    
 if __name__ == '__main__':
+    rad = input("radians coordinate ? y/n :")
     while(True):
-        x = float(input("Type x: ").replace(',','.'))
-        y = float(input("type y: ").replace(',','.')) 
-        z = float(input("type z: ").replace(',','.'))
-        s = Spherical(print=True)
-        r       = s.r(x,y,z)
-        theta   = s.theta(x=x,y=y,z=z)
-        phi     = s.phi(x=x,y=y)
-        print(f"x={x} y={y}, z={z} r={format(r, '.2f')}, theta={format(theta,'.2f')}, phi={format(phi, '.2f')}")
-        s.plot_data()
-        exit = input("repeat ? y/n :")
-        if exit != "y" :
-            break
+        if rad != 'y':
+            x = float(input("Type x: ").replace(',','.'))
+            y = float(input("type y: ").replace(',','.')) 
+            z = float(input("type z: ").replace(',','.'))
+            s = Spherical(print=True)
+            r       = s.r(x,y,z)
+            theta   = s.theta(x=x,y=y,z=z)
+            phi     = s.phi(x=x,y=y)
+            print(f"x={x} y={y}, z={z} r={format(r, '.2f')}, theta={format(theta,'.2f')}, phi={format(phi, '.2f')}")
+            s.plot_data()
+            exit = input("repeat ? y/n :")
+            if exit != "y" :
+                break
+        else :
+            r       = float(input("Type r: ").replace(',','.'))
+            theta   = float(input("type theta: ").replace(',','.')) 
+            phi     = float(input("type phi: ").replace(',','.'))
+            s       = Spherical(print=True)
+            x       = s.x(r, theta, phi)
+            y       = s.y(r, theta, phi)
+            z       = s.z(r, theta)
+            print(f"x={x} y={y}, z={z} r={format(r, '.2f')}, theta={format(theta,'.2f')}, phi={format(phi, '.2f')}")
+            s.plot_data()
+            exit = input("repeat ? y/n :")
+            if exit != "y" :
+                break
